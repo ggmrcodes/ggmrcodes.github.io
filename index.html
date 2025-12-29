@@ -3,73 +3,819 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Grounded is a circular materials initiative turning spent coffee grounds into bio-composite leather, reducing waste and emissions while enabling ESG-aligned procurement." />
-  <meta name="theme-color" content="#0b2a2f" />
+  <meta name="description" content="Grounded is a circular materials initiative turning spent coffee grounds into bio-composite leather—diverting waste, lowering emissions, and enabling ESG-aligned procurement." />
+  <meta name="theme-color" content="#2a1f1a" />
   <title>Grounded — Circular Materials Initiative</title>
 
-  <!-- Optional: system fonts for professional NGO feel -->
+  <!-- Optional fonts (adds personality). Uncomment if you want web fonts.
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  -->
+
   <style>
     :root{
-      --bg:#f6f8f7;
-      --surface:#ffffff;
-      --ink:#0f172a;
-      --muted:#475569;
-      --line:#e2e8f0;
-      --primary:#0b2a2f;      /* deep teal */
-      --primary2:#0f766e;     /* teal */
-      --accent:#b45309;       /* warm amber */
-      --focus:#2563eb;
-      --shadow: 0 10px 26px rgba(2,6,23,.08);
-      --radius:16px;
-      --max:1120px;
+      /* Paper + coffee + ink */
+      --paper:#f6f1e8;
+      --paper2:#f2ebe0;
+      --ink:#1a1a1a;
+      --muted:#4b4b4b;
+      --line:rgba(26,26,26,.14);
+      --coffee:#6b3f2a;
+      --leaf:#1f6f5b;
+      --amber:#b45b1f;
+      --shadow: 0 20px 60px rgba(20, 14, 10, .10);
+      --radius:18px;
+      --max:1180px;
     }
     *{box-sizing:border-box}
     html,body{height:100%}
     body{
       margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
       color:var(--ink);
-      background: linear-gradient(180deg, #f2f6f5, var(--bg) 28%);
-      line-height:1.6;
+      background:
+        radial-gradient(900px 520px at 15% -5%, rgba(31,111,91,.12), transparent 65%),
+        radial-gradient(720px 460px at 90% 5%, rgba(180,91,31,.14), transparent 60%),
+        linear-gradient(180deg, var(--paper), var(--paper2));
+      /* font-family: "Inter", ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial; */
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      line-height:1.65;
+      letter-spacing:.1px;
     }
     a{color:inherit}
-    .container{max-width:var(--max); margin:0 auto; padding:0 20px}
-    .skip{
-      position:absolute; left:-999px; top:10px;
-      background:var(--surface); border:1px solid var(--line);
-      padding:10px 12px; border-radius:12px;
+    .container{max-width:var(--max); margin:0 auto; padding:0 22px}
+
+    /* Top ribbon (NGO style credibility bar) */
+    .ribbon{
+      border-bottom:1px solid var(--line);
+      background: rgba(246,241,232,.75);
+      backdrop-filter: blur(10px);
     }
-    .skip:focus{left:20px; outline:3px solid rgba(37,99,235,.25)}
-    /* NAV */
+    .ribbon-inner{
+      display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap;
+      padding:10px 0;
+      font-size:13px;
+      color: rgba(26,26,26,.78);
+    }
+    .ribbon strong{font-weight:700}
+    .ribbon a{color:var(--leaf); text-decoration:none; border-bottom:1px solid rgba(31,111,91,.35)}
+    .ribbon a:hover{border-bottom-color:rgba(31,111,91,.8)}
+
+    /* Nav */
     .nav{
       position:sticky; top:0; z-index:50;
-      background: rgba(246,248,247,.92);
-      backdrop-filter: blur(10px);
+      background: rgba(246,241,232,.82);
+      backdrop-filter: blur(12px);
       border-bottom:1px solid var(--line);
     }
     .nav-inner{
       display:flex; align-items:center; justify-content:space-between;
-      padding:14px 0; gap:12px;
+      padding:14px 0;
+      gap:14px;
     }
     .brand{
-      display:flex; align-items:center; gap:10px;
-      text-decoration:none; font-weight:800; letter-spacing:.2px;
+      display:flex; align-items:center; gap:12px;
+      text-decoration:none;
     }
     .mark{
-      width:34px; height:34px; border-radius:12px;
-      background: linear-gradient(135deg, var(--primary2), var(--primary));
-      box-shadow: 0 10px 22px rgba(2,6,23,.10);
+  width:40px;
+  height:40px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:14px;
+  overflow:hidden;
+  box-shadow: 0 18px 35px rgba(20,14,10,.18);
+}
+
+.coffee-emblem{
+  width:40px;
+  height:40px;
+  display:block;
+}
+
+    .mark:after{
+      content:"";
+      position:absolute; inset:-20%;
+      background: repeating-linear-gradient(25deg, rgba(255,255,255,.10) 0 8px, rgba(255,255,255,0) 8px 16px);
+      transform: rotate(8deg);
+      opacity:.35;
     }
+    .brand-title{
+      display:flex; flex-direction:column; line-height:1.1;
+    }
+    .brand-title .name{
+      font-weight:800;
+      font-size:15px;
+      letter-spacing:.3px;
+    }
+    .brand-title .tag{
+      font-size:12px;
+      color: rgba(26,26,26,.62);
+    }
+
     .nav-links{
-      display:flex; gap:6px; flex-wrap:wrap; align-items:center; justify-content:flex-end;
+      display:flex; gap:10px; flex-wrap:wrap; align-items:center; justify-content:flex-end;
       font-size:14px;
     }
     .nav-links a{
       text-decoration:none;
-      padding:9px 11px;
+      padding:9px 10px;
       border-radius:999px;
-      color:var(--muted);
+      color: rgba(26,26,26,.74);
       border:1px solid transparent;
     }
     .nav-links a:hover{
-      color:var(--ink
+      border-color: var(--line);
+      background: rgba(255,255,255,.55);
+      color: var(--ink);
+    }
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:10px 14px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.65);
+      text-decoration:none;
+      font-weight:700;
+      box-shadow: 0 10px 22px rgba(20,14,10,.08);
+      transition: transform .08s ease, box-shadow .15s ease;
+      white-space:nowrap;
+    }
+    .btn:hover{transform: translateY(-1px); box-shadow: 0 18px 38px rgba(20,14,10,.12)}
+    .btn.primary{
+      border-color: rgba(31,111,91,.35);
+      background: linear-gradient(145deg, rgba(31,111,91,.18), rgba(180,91,31,.12));
+    }
+
+    /* Hero */
+    header.hero{padding:58px 0 22px}
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap:18px;
+      align-items:start;
+    }
+    @media (max-width: 980px){
+      .hero-grid{grid-template-columns:1fr}
+    }
+
+    .hero-left{
+      background: rgba(255,255,255,.58);
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      position:relative;
+    }
+    .hero-left .pad{padding:26px 26px 20px}
+    .eyebrow{
+      display:inline-flex; align-items:center; gap:10px;
+      font-size:12px;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      color: rgba(31,111,91,.95);
+      font-weight:800;
+      margin-bottom:10px;
+    }
+    .dot{
+      width:9px; height:9px; border-radius:999px;
+      background: var(--amber);
+      box-shadow: 0 0 0 4px rgba(180,91,31,.18);
+    }
+    h1{
+      margin:0 0 12px;
+      /* font-family: "Fraunces", ui-serif, Georgia, serif; */
+      font-family: ui-serif, Georgia, "Times New Roman", Times, serif;
+      font-size: clamp(32px, 4.3vw, 52px);
+      letter-spacing:-.8px;
+      line-height:1.05;
+    }
+    .lead{
+      margin:0 0 16px;
+      color: rgba(26,26,26,.78);
+      font-size:16px;
+      max-width: 72ch;
+    }
+    .hero-actions{display:flex; gap:10px; flex-wrap:wrap; margin-top:14px}
+
+    /* Signature motif strip */
+    .motif{
+      border-top:1px solid var(--line);
+      background:
+        radial-gradient(800px 220px at 20% 0%, rgba(31,111,91,.10), transparent 65%),
+        radial-gradient(760px 240px at 90% 0%, rgba(107,63,42,.10), transparent 60%),
+        rgba(255,255,255,.45);
+      padding:14px 18px 12px;
+    }
+    .motif-grid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:14px;
+      align-items:center;
+    }
+    @media (max-width: 760px){ .motif-grid{grid-template-columns:1fr} }
+    .mini{
+      display:flex; gap:10px; align-items:flex-start;
+    }
+    .mini strong{display:block; font-size:13px}
+    .mini span{display:block; font-size:13px; color: rgba(26,26,26,.7)}
+    .icon{
+      width:34px; height:34px; border-radius:14px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.65);
+      display:flex; align-items:center; justify-content:center;
+      flex: 0 0 auto;
+    }
+
+    .hero-right{
+      position:relative;
+      background: rgba(255,255,255,.55);
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding:18px;
+      overflow:hidden;
+    }
+    .grain{
+      position:absolute; inset:-20%;
+      background: radial-gradient(circle at 30% 30%, rgba(0,0,0,.04), transparent 55%),
+                  radial-gradient(circle at 70% 60%, rgba(0,0,0,.03), transparent 55%),
+                  repeating-linear-gradient(35deg, rgba(0,0,0,.02) 0 10px, rgba(0,0,0,0) 10px 20px);
+      opacity:.55;
+      transform: rotate(-6deg);
+      pointer-events:none;
+    }
+    .metric{
+      position:relative;
+      border:1px solid rgba(26,26,26,.12);
+      border-radius: 16px;
+      padding: 14px;
+      background: rgba(255,255,255,.72);
+      margin-bottom:10px;
+    }
+    .metric:last-child{margin-bottom:0}
+    .metric strong{display:block; font-size:18px}
+    .metric span{display:block; margin-top:4px; color: rgba(26,26,26,.70); font-size:13px}
+
+    /* Sections */
+    section{padding: 38px 0}
+    .section-head{
+      display:flex; justify-content:space-between; align-items:flex-end; gap:14px; flex-wrap:wrap;
+      margin-bottom:14px;
+    }
+    h2{
+      margin:0;
+      font-size:22px;
+      letter-spacing:-.25px;
+    }
+    .kicker{
+      margin:0;
+      color: rgba(26,26,26,.72);
+      font-size:14px;
+      max-width: 88ch;
+    }
+
+    /* Editorial layout cards */
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap:14px;
+    }
+    .card{
+      grid-column: span 6;
+      background: rgba(255,255,255,.65);
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding:18px;
+      position:relative;
+      overflow:hidden;
+    }
+    .card:before{
+      content:"";
+      position:absolute; left:18px; top:18px;
+      width:10px; height:10px; border-radius:999px;
+      background: rgba(31,111,91,.55);
+      box-shadow: 0 0 0 6px rgba(31,111,91,.10);
+    }
+    .card h3{
+      margin:0 0 8px;
+      font-size:16px;
+      padding-left:20px;
+    }
+    .card p{margin:0; color: rgba(26,26,26,.75); font-size:14px}
+    .list{margin:10px 0 0; padding-left:18px; color: rgba(26,26,26,.72); font-size:14px}
+    .list li{margin:6px 0}
+    @media (max-width: 980px){ .card{grid-column: span 12} }
+    .span-7{grid-column: span 7}
+    .span-5{grid-column: span 5}
+    @media (max-width: 980px){ .span-7,.span-5{grid-column:span 12} }
+
+    /* Link underline animation */
+    .link{
+      color: var(--leaf);
+      text-decoration:none;
+      background: linear-gradient(90deg, rgba(31,111,91,.35), rgba(31,111,91,.35));
+      background-size: 100% 1px;
+      background-repeat:no-repeat;
+      background-position: 0 100%;
+      padding-bottom:2px;
+    }
+    .link:hover{background-size:100% 2px}
+
+    /* Video */
+    .video-wrap{
+      background: rgba(255,255,255,.65);
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding:16px;
+    }
+    .video{
+      aspect-ratio: 16/9;
+      width:100%;
+      border-radius: 14px;
+      border:1px solid rgba(26,26,26,.14);
+      overflow:hidden;
+      background:#0b1220;
+    }
+    iframe{width:100%; height:100%; border:0}
+
+    /* Contact */
+    .form{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:10px;
+      margin-top: 12px;
+    }
+    .full{grid-column: 1 / -1}
+    @media (max-width: 720px){ .form{grid-template-columns:1fr} }
+    input, textarea, select{
+      width:100%;
+      padding:12px 12px;
+      border-radius: 14px;
+      border:1px solid rgba(26,26,26,.18);
+      background: rgba(255,255,255,.75);
+      color:var(--ink);
+      outline:none;
+    }
+    textarea{min-height:120px; resize:vertical}
+    input:focus, textarea:focus, select:focus{
+      outline: 3px solid rgba(37,99,235,.18);
+      border-color: rgba(37,99,235,.40);
+    }
+
+    .footer{
+      margin-top:20px;
+      border-top:1px solid var(--line);
+      background: rgba(246,241,232,.65);
+      padding: 26px 0 42px;
+      color: rgba(26,26,26,.68);
+      font-size: 13px;
+    }
+    .footer-row{
+      display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap; align-items:center;
+    }
+    .small{font-size:12px; color: rgba(26,26,26,.62)}
+    .pillrow{display:flex; gap:10px; flex-wrap:wrap; margin-top:10px}
+    .pill{
+      font-size:13px;
+      color: rgba(26,26,26,.74);
+      border:1px solid rgba(26,26,26,.14);
+      background: rgba(255,255,255,.55);
+      padding:8px 10px;
+      border-radius:999px;
+    }
+
+    /* Subtle reveal */
+    .reveal{opacity:0; transform: translateY(10px); transition: opacity .7s ease, transform .7s ease;}
+    .reveal.visible{opacity:1; transform:none}
+
+    /* Signature “flow” svg */
+    .flow{
+      width:100%;
+      height:62px;
+    }
+    .flow path{
+      fill:none;
+      stroke: rgba(26,26,26,.22);
+      stroke-width: 2.2;
+      stroke-linecap: round;
+      stroke-dasharray: 8 10;
+    }
+    .flow circle{
+      fill: rgba(31,111,91,.75);
+      opacity:.9;
+    }
+    .flow .coffee{fill: rgba(107,63,42,.85)}
+    .flow .amber{fill: rgba(180,91,31,.85)}
+  </style>
+</head>
+
+<body>
+
+  <div class="ribbon">
+    <div class="container">
+      <div class="ribbon-inner">
+        <div><strong>Grounded</strong> • Circular Materials Initiative</div>
+        <div>For partnerships: <a href="#contact">request a pilot</a> • <a href="#video">watch the video</a></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="nav">
+    <div class="container">
+      <div class="nav-inner">
+        <a class="brand" href="#top">
+          <span class="mark" aria-hidden="true">
+  <svg class="coffee-emblem" viewBox="0 0 64 64" role="img" aria-label="Coffee emblem">
+    <!-- Badge -->
+    <defs>
+      <linearGradient id="g1" x1="0" x2="1" y1="0" y2="1">
+        <stop offset="0" stop-color="#1f6f5b"/>
+        <stop offset="1" stop-color="#6b3f2a"/>
+      </linearGradient>
+      <radialGradient id="g2" cx="30%" cy="25%" r="80%">
+        <stop offset="0" stop-color="rgba(255,255,255,.9)"/>
+        <stop offset="1" stop-color="rgba(255,255,255,0)"/>
+      </radialGradient>
+    </defs>
+
+    <rect x="6" y="6" width="52" height="52" rx="18" fill="url(#g1)"/>
+    <rect x="6" y="6" width="52" height="52" rx="18" fill="url(#g2)" opacity=".45"/>
+
+    <!-- Coffee bean emblem -->
+    <g transform="translate(0,1)" fill="none" stroke="rgba(255,255,255,.92)" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+      <!-- Bean outline -->
+      <path d="M32 18c7.2 0 13 6.6 13 14.7C45 41 39.2 46 32 46S19 41 19 32.7C19 24.6 24.8 18 32 18z"/>
+      <!-- Bean crease -->
+      <path d="M31.5 19.5c-3.8 3.6-6.2 8.2-6.2 13.2 0 5.1 2.4 9.7 6.2 13.3"/>
+      <!-- Subtle steam -->
+      <path d="M24 16c-2.2-2.6 2.2-4.6 0-7"/>
+      <path d="M32 14c-2.2-2.6 2.2-4.6 0-7"/>
+      <path d="M40 16c-2.2-2.6 2.2-4.6 0-7"/>
+    </g>
+
+    <!-- Grain texture -->
+    <g opacity=".18">
+      <path d="M10 44l44-22" stroke="rgba(255,255,255,.7)" stroke-width="3"/>
+      <path d="M12 50l44-22" stroke="rgba(255,255,255,.5)" stroke-width="2"/>
+    </g>
+  </svg>
+</span>
+
+          <span class="brand-title">
+            <span class="name">Grounded</span>
+            <span class="tag">Turning waste into materials value</span>
+          </span>
+        </a>
+
+        <nav class="nav-links" aria-label="Primary navigation">
+          <a href="#mission">Mission</a>
+          <a href="#programs">Programs</a>
+          <a href="#impact">Impact</a>
+          <a href="#video">Video</a>
+          <a href="#contact" class="btn primary">Get involved</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+
+  <header id="top" class="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <!-- Left: Editorial hero -->
+        <div class="hero-left reveal">
+          <div class="pad">
+            <div class="eyebrow"><span class="dot" aria-hidden="true"></span> circular procurement • measurable impact</div>
+            <h1>Make waste useful—without compromising performance.</h1>
+            <p class="lead">
+              Grounded diverts spent coffee grounds from landfill and transforms them into resilient bio-composite leather sheets.
+              We support partners who need credible sustainability outcomes—waste reduction, lower-impact materials, and compliance-ready reporting—
+              delivered through a transparent, pilot-driven program.
+            </p>
+
+            <div class="hero-actions">
+              <a class="btn primary" href="#contact">Request a pilot / samples</a>
+              <a class="btn" href="#programs">Explore our programs</a>
+              <a class="btn" href="#transparency">Methodology</a>
+            </div>
+
+            <div class="pillrow">
+              <span class="pill">~25× lower CO₂e vs animal leather*</span>
+              <span class="pill">Prototype tensile strength: 13.25 MPa</span>
+              <span class="pill">Naturally tinted (no tanning step)</span>
+            </div>
+            <p class="small" id="transparency" style="margin:10px 0 0;">
+              *Public site excludes proprietary details. We share references + assumptions with partners under pilot terms.
+            </p>
+          </div>
+
+          <!-- Signature “flow” motif -->
+          <div class="motif">
+            <svg class="flow" viewBox="0 0 900 80" role="img" aria-label="Coffee-to-leather circular flow">
+              <path d="M20,55 C150,10 240,70 360,40 C480,10 560,70 680,38 C770,15 820,18 880,30" />
+              <circle class="coffee" cx="80" cy="42" r="7"></circle>
+              <circle class="amber" cx="360" cy="40" r="7"></circle>
+              <circle cx="680" cy="38" r="7"></circle>
+              <circle cx="860" cy="30" r="7"></circle>
+            </svg>
+
+            <div class="motif-grid">
+              <div class="mini">
+                <div class="icon" aria-hidden="true">☕</div>
+                <div>
+                  <strong>Waste-to-value collection</strong>
+                  <span>Standardized pickup & preprocessing for traceability.</span>
+                </div>
+              </div>
+              <div class="mini">
+                <div class="icon" aria-hidden="true">🧵</div>
+                <div>
+                  <strong>Material pilot sheets</strong>
+                  <span>Thickness, texture, and finish tuned by application.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Metrics w/ tactile grain -->
+        <aside class="hero-right reveal" aria-label="Key metrics and indicators">
+          <div class="grain" aria-hidden="true"></div>
+          <div class="metric">
+            <strong>Lower-impact procurement</strong>
+            <span>Supports ESG disclosures & sustainability-linked purchasing.</span>
+          </div>
+          <div class="metric">
+            <strong>Performance-first</strong>
+            <span>Targets durability metrics used in hospitality and accessories.</span>
+          </div>
+          <div class="metric">
+            <strong>Circular incentives</strong>
+            <span>Partners can reduce disposal costs and document diversion.</span>
+          </div>
+          <div class="metric">
+            <strong>Community value</strong>
+            <span>Potential demand pathway for natural rubber supply chains.</span>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </header>
+
+  <section id="mission">
+    <div class="container">
+      <div class="section-head">
+        <h2>Mission</h2>
+        <p class="kicker">
+          Sustainability promises often outpace operational reality. We exist to close that gap with pilots that are measurable,
+          performance-ready, and partnership-driven.
+        </p>
+      </div>
+
+      <div class="grid">
+        <div class="card span-7 reveal">
+          <h3>What issue we address</h3>
+          <p>
+            Across global supply chains, organizations are expected to reduce emissions, waste output, and material toxicity—
+            yet organic waste streams remain underutilized because there are few scalable pathways to convert them into commercially
+            viable materials. This leads to recurring disposal costs, lost economic value, and avoidable landfill emissions.
+          </p>
+        </div>
+        <div class="card span-5 reveal">
+          <h3>What partners need</h3>
+          <p>
+            Procurement teams want materials that meet performance standards while supporting compliance and credible reporting.
+            Brands want sustainability outcomes they can defend—without “green claims” that fail audits.
+          </p>
+          <ul class="list">
+            <li>Traceability and documentation</li>
+            <li>Durability and batch consistency</li>
+            <li>Clear pilot → scale pathway</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="programs">
+    <div class="container">
+      <div class="section-head">
+        <h2>Programs</h2>
+        <p class="kicker">Designed for NGOs and partners: transparent, measurable, and scalable—with sensitive details protected.</p>
+      </div>
+
+      <div class="grid">
+        <div class="card reveal">
+          <h3>1) Collection Program</h3>
+          <p>We onboard cafés, hotels, and food-service operators into a structured collection workflow.</p>
+          <ul class="list">
+            <li>Storage guidance, pickup cadence, preprocessing requirements</li>
+            <li>Partner diversion documentation (for ESG reporting)</li>
+            <li>Incentive-aligned waste-to-value model</li>
+          </ul>
+        </div>
+
+        <div class="card reveal">
+          <h3>2) Pilot Materials</h3>
+          <p>We produce pilot-grade sheets tuned for specific applications and evaluation criteria.</p>
+          <ul class="list">ma
+            <li>Thickness, texture, finish aligned to use-case</li>
+            <li>Durability-oriented validation (abrasion, flex, water resistance)</li>
+            <li>Prototype tensile strength: <strong>13.25 MPa</strong></li>
+          </ul>
+        </div>
+
+        <div class="card reveal">
+          <h3>3) Impact Reporting Support</h3>
+          <p>We provide conservative impact accounting with references and assumptions.</p>
+          <ul class="list">
+            <li>Inputs diverted, estimated footprint per m² (methodology)</li>
+            <li>Traceability summaries for procurement teams</li>
+            <li>Updates as pilots scale</li>
+          </ul>
+        </div>
+
+        <div class="card reveal">
+          <h3>4) Livelihood Pathways</h3>
+          <p>Natural rubber inputs can create a demand pathway beyond narrow commodity cycles.</p>
+          <ul class="list">
+            <li>Diversification beyond tires/gloves market concentration</li>
+            <li>Potential longer-term procurement relationships</li>
+            <li>Value uplift via traceability and ESG-linked sourcing</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="impact">
+    <div class="container">
+      <div class="section-head">
+        <h2>Impact</h2>
+        <p class="kicker">We prioritize credibility: measurable outputs, conservative claims, and real-world performance validation.</p>
+      </div>
+
+      <div class="grid">
+        <div class="card span-5 reveal">
+          <h3>Environmental outcomes</h3>
+          <ul class="list">
+            <li>Diverts landfill-bound coffee grounds</li>
+            <li>Targets significantly lower CO₂e per m² vs animal leather*</li>
+            <li>Reduces reliance on toxic tanning processes</li>
+          </ul>
+          <p class="small">*Share exact methods & references with partners during pilots.</p>
+        </div>
+
+        <div class="card span-7 reveal">
+          <h3>Where the material is used</h3>
+          <p>We focus on applications where durability and surface performance matter.</p>
+          <div class="pillrow">
+            <span class="pill">Hotel upholstery (chairs, headboards)</span>
+            <span class="pill">Placemat / menu covers</span>
+            <span class="pill">Handbags & accessories</span>
+            <span class="pill">Footwear uppers</span>
+            <span class="pill">Commercial interiors</span>
+          </div>
+          <p class="small" style="margin-top:10px;">
+            Want to evaluate a use-case? <a class="link" href="#contact">Request a pilot sample</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="video">
+    <div class="container">
+      <div class="section-head">
+        <h2>Innovation Video</h2>
+        <p class="kicker">A short overview for judges, partners, and the public.</p>
+      </div>
+
+      <div class="video-wrap reveal">
+        <div class="video" role="region" aria-label="Innovation video embed">
+          <!-- Replace with your embed link -->
+          <iframe
+            src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+            title="Grounded Innovation Video"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen></iframe>
+        </div>
+        <p class="small" style="margin:10px 2px 0;">
+          Replace the embed URL with your official Innovation Video link.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="container">
+      <div class="section-head">
+        <h2>Get involved</h2>
+        <p class="kicker">We welcome pilots, research collaborations, and program partnerships.</p>
+      </div>
+
+      <div class="grid">
+        <div class="card span-7 reveal">
+          <h3>Partnership inquiry</h3>
+          <p>
+            For pilots, include: application (upholstery/accessories), expected volume (m²),
+            preferred finish, and timeline. For collection partners, include estimated grounds per day.
+          </p>
+
+          <form id="contactForm" class="form" autocomplete="on">
+            <input name="name" placeholder="Name" required />
+            <input name="email" type="email" placeholder="Email" required />
+            <input name="org" class="full" placeholder="Organization (NGO / hotel / café / brand / manufacturer)" />
+            <select name="topic" class="full" aria-label="Inquiry type">
+              <option value="Pilot request">Pilot request</option>
+              <option value="Coffee grounds collection partnership">Coffee grounds collection partnership</option>
+              <option value="Research/testing collaboration">Research/testing collaboration</option>
+              <option value="Funding/grants">Funding/grants</option>
+              <option value="Media inquiry">Media inquiry</option>
+            </select>
+            <textarea name="message" class="full" placeholder="Message"></textarea>
+
+            <div class="full" style="display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-top:6px;">
+              <button class="btn primary" type="submit">Send message</button>
+              <a class="btn" href="mailto:hello@groundedmaterials.org?subject=Grounded%20Inquiry">Email instead</a>
+            </div>
+
+            <p class="small full" style="margin:8px 0 0;">
+              Replace <strong>hello@groundedmaterials.org</strong> with your real email.
+            </p>
+          </form>
+        </div>
+
+        <div class="card span-5 reveal">
+          <h3>Public transparency</h3>
+          <p>
+            This website is intentionally high-level. Proprietary formulation ratios and sensitive parameters
+            are shared only under pilot collaboration terms.
+          </p>
+          <ul class="list">
+            <li>Public: mission, programs, validation outcomes</li>
+            <li>Partner-only: detailed methodology + references</li>
+            <li>Next: publish pilot metrics as data matures</li>
+          </ul>
+          <p class="small" style="margin-top:10px;">
+            Want this to feel even more “human”? Add photos of: collection bins, prototype sheets, partner cafés/hotels, and your team.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-row">
+        <div>© <span id="year"></span> Grounded • Circular Materials Initiative</div>
+        <div style="display:flex; gap:10px; flex-wrap:wrap;">
+          <a class="link" href="#mission">Mission</a>
+          <span aria-hidden="true">•</span>
+          <a class="link" href="#programs">Programs</a>
+          <span aria-hidden="true">•</span>
+          <a class="link" href="#contact">Contact</a>
+        </div>
+      </div>
+      <p class="small" style="margin-top:10px;">
+        Built for public communication. Replace placeholders and embed your official video before publishing.
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Reveal on scroll
+    const els = Array.from(document.querySelectorAll(".reveal"));
+    const io = new IntersectionObserver((entries)=>{
+      for (const e of entries){
+        if (e.isIntersecting){ e.target.classList.add("visible"); io.unobserve(e.target); }
+      }
+    }, {threshold: 0.12});
+    els.forEach(el=>io.observe(el));
+
+    // Contact form -> mailto (no backend)
+    document.getElementById("contactForm").addEventListener("submit", function(e){
+      e.preventDefault();
+      const data = new FormData(e.target);
+
+      const to = "hello@groundedmaterials.org"; // change this
+      const subject = `Grounded — ${data.get("topic") || "Inquiry"}`;
+      const body =
+`Name: ${data.get("name") || ""}
+Email: ${data.get("email") || ""}
+Organization: ${data.get("org") || ""}
+
+Message:
+${data.get("message") || ""}
+`;
+
+      window.location.href = `mailto:${to}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    });
+  </script>
+</body>
+</html>
