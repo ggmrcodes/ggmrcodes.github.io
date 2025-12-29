@@ -1,0 +1,690 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Grounded transforms discarded coffee grounds into resilient bio-composite leather—durable, customizable, and low-emission." />
+  <meta name="theme-color" content="#0b0f14" />
+  <title>Grounded — Coffee-to-Leather Bio-Composite</title>
+
+  <style>
+    :root{
+      --bg:#0b0f14;
+      --card:#111826;
+      --muted:#8fa3b6;
+      --text:#e9f0f7;
+      --line:rgba(255,255,255,.08);
+      --accent:#8be28b;      /* change if you want */
+      --accent2:#f5c66a;     /* change if you want */
+      --shadow: 0 12px 30px rgba(0,0,0,.35);
+      --radius:18px;
+      --max:1100px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      background: radial-gradient(1200px 700px at 20% -10%, rgba(139,226,139,.14), transparent 60%),
+                  radial-gradient(1000px 600px at 100% 0%, rgba(245,198,106,.12), transparent 55%),
+                  var(--bg);
+      color:var(--text);
+      line-height:1.55;
+    }
+    a{color:inherit}
+    .container{max-width:var(--max); margin:0 auto; padding:0 20px}
+    .nav{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter:saturate(1.4) blur(10px);
+      background: rgba(11,15,20,.65);
+      border-bottom:1px solid var(--line);
+    }
+    .nav-inner{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:14px 0;
+      gap:12px;
+    }
+    .brand{
+      display:flex; align-items:center; gap:10px; text-decoration:none;
+      font-weight:700; letter-spacing:.2px;
+    }
+    .logo{
+      width:36px; height:36px; border-radius:12px;
+      background: linear-gradient(135deg, rgba(139,226,139,.9), rgba(245,198,106,.9));
+      box-shadow: 0 10px 22px rgba(0,0,0,.35);
+    }
+    .nav-links{
+      display:flex; gap:14px; flex-wrap:wrap; align-items:center; justify-content:flex-end;
+      font-size:14px; color:var(--muted);
+    }
+    .nav-links a{
+      text-decoration:none;
+      padding:8px 10px;
+      border-radius:999px;
+      border:1px solid transparent;
+    }
+    .nav-links a:hover{
+      color:var(--text);
+      border-color:var(--line);
+      background: rgba(255,255,255,.03);
+    }
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:10px 14px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      text-decoration:none;
+      font-weight:650;
+      box-shadow:none;
+      transition: transform .08s ease, background .15s ease;
+      white-space:nowrap;
+    }
+    .btn:hover{background: rgba(255,255,255,.06); transform: translateY(-1px)}
+    .btn.primary{
+      border-color: rgba(139,226,139,.35);
+      background: linear-gradient(135deg, rgba(139,226,139,.2), rgba(245,198,106,.14));
+    }
+
+    header.hero{
+      padding:56px 0 28px;
+    }
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap:22px;
+      align-items:stretch;
+    }
+    @media (max-width: 900px){
+      .hero-grid{grid-template-columns:1fr}
+    }
+
+    .hero-card{
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(17,24,38,.55);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      position:relative;
+    }
+    .hero-card .pad{padding:26px}
+    h1{
+      margin:0 0 10px;
+      font-size: clamp(30px, 4.2vw, 46px);
+      line-height:1.1;
+      letter-spacing:-.8px;
+    }
+    .sub{
+      margin:0 0 18px;
+      color: var(--muted);
+      font-size: 16px;
+      max-width: 62ch;
+    }
+    .pill-row{display:flex; flex-wrap:wrap; gap:10px; margin: 16px 0 0}
+    .pill{
+      font-size:13px;
+      color: var(--text);
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      padding:7px 10px;
+      border-radius:999px;
+    }
+    .hero-actions{display:flex; gap:10px; flex-wrap:wrap; margin-top:18px}
+
+    .metrics{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap:12px;
+      padding: 18px;
+    }
+    .metric{
+      border:1px solid var(--line);
+      border-radius: 16px;
+      padding: 16px;
+      background: rgba(255,255,255,.03);
+    }
+    .metric strong{display:block; font-size:18px; letter-spacing:-.2px}
+    .metric span{display:block; color:var(--muted); font-size:13px; margin-top:4px}
+
+    section{padding: 34px 0}
+    .section-title{
+      display:flex; align-items:flex-end; justify-content:space-between; gap:14px; flex-wrap:wrap;
+      margin-bottom:14px;
+    }
+    h2{
+      margin:0;
+      font-size: 22px;
+      letter-spacing:-.3px;
+    }
+    .hint{color:var(--muted); font-size:14px; max-width: 70ch}
+
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap:14px;
+    }
+    .card{
+      grid-column: span 6;
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(17,24,38,.50);
+      box-shadow: var(--shadow);
+      padding: 18px;
+    }
+    @media (max-width: 900px){
+      .card{grid-column: span 12}
+    }
+    .card h3{margin:0 0 8px; font-size:16px}
+    .card p{margin:0; color:var(--muted); font-size:14px}
+    .list{margin:10px 0 0; padding:0 0 0 18px; color:var(--muted); font-size:14px}
+    .list li{margin:6px 0}
+
+    .apps{display:flex; flex-wrap:wrap; gap:10px; margin-top:10px}
+    .tag{
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      padding:8px 10px;
+      border-radius: 999px;
+      font-size:13px;
+      color: var(--text);
+    }
+
+    .video{
+      aspect-ratio: 16 / 9;
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      overflow:hidden;
+      background: rgba(0,0,0,.25);
+    }
+    iframe{width:100%; height:100%; border:0}
+
+    .footer{
+      padding: 26px 0 36px;
+      border-top:1px solid var(--line);
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .footer-row{
+      display:flex; gap:12px; justify-content:space-between; flex-wrap:wrap; align-items:center;
+    }
+
+    .form{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:10px;
+      margin-top: 10px;
+    }
+    .form .full{grid-column: 1 / -1}
+    @media (max-width: 700px){
+      .form{grid-template-columns:1fr}
+    }
+    input, textarea{
+      width:100%;
+      padding: 12px 12px;
+      border-radius: 14px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      color: var(--text);
+      outline:none;
+    }
+    textarea{min-height:120px; resize:vertical}
+    input::placeholder, textarea::placeholder{color: rgba(143,163,182,.75)}
+    .note{
+      margin-top:10px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .small{font-size:12px}
+    .divider{height:1px; background:var(--line); margin: 14px 0}
+  </style>
+</head>
+
+<body>
+  <!-- NAV -->
+  <div class="nav">
+    <div class="container">
+      <div class="nav-inner">
+        <a class="brand" href="#top" aria-label="Grounded home">
+          <span class="logo" aria-hidden="true"></span>
+          <span>Grounded</span>
+        </a>
+
+        <div class="nav-links" aria-label="Site navigation">
+          <a href="#innovation">Innovation</a>
+          <a href="#impact">Impact</a>
+          <a href="#validation">Progress</a>
+          <a href="#market">Market</a>
+          <a href="#team">Team</a>
+          <a href="#video">Video</a>
+          <a href="#contact" class="btn primary">Partner with us</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <header id="top" class="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-card">
+          <div class="pad">
+            <h1>From coffee waste to premium bio-composite leather.</h1>
+            <p class="sub">
+              Grounded upcycles spent coffee grounds and natural rubber into a durable, customizable sheet material
+              designed for real-world applications—without the environmental cost of conventional leather.
+            </p>
+
+            <div class="hero-actions">
+              <a class="btn primary" href="#contact">Request samples</a>
+              <a class="btn" href="#video">Watch the Innovation Video</a>
+              <a class="btn" href="#innovation">See how it works</a>
+            </div>
+
+            <div class="pill-row" aria-label="Key claims">
+              <span class="pill">~25× lower CO₂e vs animal leather*</span>
+              <span class="pill">Tensile strength: 13.25 MPa</span>
+              <span class="pill">Naturally tinted · no toxic tanning</span>
+              <span class="pill">Waste-to-value supply program</span>
+            </div>
+
+            <p class="note small">
+              *Replace with your exact LCA methodology / reference in the References section.
+            </p>
+          </div>
+        </div>
+
+        <div class="hero-card" aria-label="Headline metrics">
+          <div class="metrics">
+            <div class="metric">
+              <strong>4.4 kg CO₂e / m²</strong>
+              <span>Target footprint per square meter (update with your latest data).</span>
+            </div>
+            <div class="metric">
+              <strong>Upcycled inputs</strong>
+              <span>Spent coffee grounds + natural rubber, transforming waste streams into material value.</span>
+            </div>
+            <div class="metric">
+              <strong>Commercial applications</strong>
+              <span>Upholstery, accessories, footwear, and interior materials.</span>
+            </div>
+            <div class="metric">
+              <strong>Partners</strong>
+              <span>Hotels · cafés · brands · manufacturers (pilot-ready).</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- INNOVATION -->
+  <section id="innovation">
+    <div class="container">
+      <div class="section-title">
+        <h2>Innovation</h2>
+        <div class="hint">High-level explanation (non-proprietary) for customers, judges, and partners.</div>
+      </div>
+
+      <div class="grid">
+        <div class="card">
+          <h3>What we make</h3>
+          <p>
+            A resilient bio-composite “coffee leather” sheet with tunable thickness, texture, and finish.
+            It is designed to mimic the hand-feel and aesthetics of animal leather while supporting lower-impact procurement.
+          </p>
+          <div class="apps">
+            <span class="tag">Naturally tinted</span>
+            <span class="tag">Custom texture</span>
+            <span class="tag">Flexible</span>
+            <span class="tag">Wear-resistant</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>How it works (high level)</h3>
+          <p>
+            Spent coffee grounds are cleaned, dried, and processed into a consistent particulate feedstock.
+            The feedstock is then integrated with natural rubber and bio-based binders to form a composite matrix,
+            cured into sheets, and finished for targeted use cases.
+          </p>
+          <ul class="list">
+            <li>Input standardization for consistent batches</li>
+            <li>Composite formulation for strength + flexibility</li>
+            <li>Sheet forming + curing + finishing</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>Material performance targets</h3>
+          <p>
+            Grounded focuses on meeting procurement standards where sustainable materials often fail: mechanical performance,
+            surface durability, and consistent quality at scale.
+          </p>
+          <ul class="list">
+            <li>Tensile strength: <strong>13.25 MPa</strong> (prototype result)</li>
+            <li>Flex endurance + abrasion durability (in-progress validation)</li>
+            <li>Water resistance + stain resistance (application-specific finishes)</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>Applications</h3>
+          <p>Clear product pathways for buyers and manufacturers.</p>
+          <div class="apps" aria-label="Applications list">
+            <span class="tag">Hotel upholstery (chairs, headboards)</span>
+            <span class="tag">Placemat / menu covers</span>
+            <span class="tag">Handbags & accessories</span>
+            <span class="tag">Footwear uppers</span>
+            <span class="tag">Automotive / commercial interiors</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- IMPACT -->
+  <section id="impact">
+    <div class="container">
+      <div class="section-title">
+        <h2>Impact</h2>
+        <div class="hint">Why stakeholders care: emissions, waste reduction, and compliance-ready procurement.</div>
+      </div>
+
+      <div class="grid">
+        <div class="card">
+          <h3>Waste-to-value system</h3>
+          <p>
+            Coffee grounds are typically treated as disposal waste. Grounded turns them into an industrial input,
+            lowering disposal burden while creating new economic value through structured collection programs.
+          </p>
+          <ul class="list">
+            <li>Reduces landfill-bound organic waste</li>
+            <li>Creates measurable ESG outcomes for partners</li>
+            <li>Turns waste streams into revenue streams</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>Compliance and ESG credibility</h3>
+          <p>
+            Customers benefit from lower-carbon materials that support sustainability disclosures,
+            audit readiness, and eligibility for sustainability-linked procurement programs.
+          </p>
+          <ul class="list">
+            <li>Lower-carbon material inputs (Scope 3 narrative support)</li>
+            <li>Reduced material toxicity vs conventional tanning</li>
+            <li>Traceable sourcing via partner collection network</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>Rubber farmer upside</h3>
+          <p>
+            Natural rubber input creates an additional demand pathway beyond commodity cycles,
+            supporting more stable procurement relationships and value-added markets.
+          </p>
+          <ul class="list">
+            <li>Demand diversification beyond tires / gloves</li>
+            <li>Potential for longer-term supply agreements</li>
+            <li>Value uplift through traceability and ESG-linked inputs</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>Quantified metrics (edit these)</h3>
+          <p>Update as your testing and LCA mature.</p>
+          <ul class="list">
+            <li>Footprint: <strong>4.4 kg CO₂e/m²</strong> (target / current)</li>
+            <li>Relative emissions: <strong>~25× lower</strong> vs animal leather (claim)</li>
+            <li>Inputs upcycled per m²: <strong>XX kg coffee</strong> + <strong>XX kg rubber</strong></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VALIDATION -->
+  <section id="validation">
+    <div class="container">
+      <div class="section-title">
+        <h2>Validation & Progress</h2>
+        <div class="hint">Evidence that the material works and the supply model is feasible.</div>
+      </div>
+
+      <div class="grid">
+        <div class="card">
+          <h3>Technical validation</h3>
+          <p>
+            We iterated formulations to optimize composite ratios and sheet forming for consistent prototypes.
+            Current prototype tensile testing achieved <strong>13.25 MPa</strong>, comparable to animal leather ranges reported in literature.
+          </p>
+          <ul class="list">
+            <li>Prototype sheet production (multiple iterations)</li>
+            <li>Tensile testing completed; durability tests in progress</li>
+            <li>Finish / texture prototyping for target use cases</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>Supply validation</h3>
+          <p>
+            We engaged coffee-generating partners to confirm consistent availability of grounds and willingness to participate
+            in structured collection and incentive programs.
+          </p>
+          <ul class="list">
+            <li>Partner sourcing conversations (hotels / cafés / restaurants)</li>
+            <li>Collection workflow designed (storage, pickup, preprocessing)</li>
+            <li>Next: pilot collection + batch consistency evaluation</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MARKET -->
+  <section id="market">
+    <div class="container">
+      <div class="section-title">
+        <h2>Market</h2>
+        <div class="hint">Who buys, what they care about, and how the ecosystem works.</div>
+      </div>
+
+      <div class="grid">
+        <div class="card">
+          <h3>Target customers</h3>
+          <p>
+            B2B buyers who require performance-grade sustainable materials:
+            hospitality groups, fashion & lifestyle brands, and interior-material manufacturers.
+          </p>
+          <ul class="list">
+            <li>Priorities: durability, quality consistency, compliance, traceability</li>
+            <li>Needs: low-carbon materials with real-world performance</li>
+            <li>Motivation: ESG targets + investor and consumer scrutiny</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>Buyer vs user</h3>
+          <p>
+            Procurement teams and manufacturers purchase material sheets;
+            end users experience the finished product (furniture, bags, interiors).
+          </p>
+          <ul class="list">
+            <li>Buyer/payer: B2B procurement & product teams</li>
+            <li>User: hotel guests, consumers, passengers</li>
+            <li>Decision drivers: performance + compliance + brand risk reduction</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>Market size (edit with your sources)</h3>
+          <p>
+            Leather is a large global market, and alternative leather is growing rapidly under regulatory and consumer pressure.
+            Replace the figures below with your referenced numbers.
+          </p>
+          <ul class="list">
+            <li>Global leather market: <strong>~USD 400B+</strong> (placeholder)</li>
+            <li>Alternative leather: <strong>~USD XXB by 2030</strong> (placeholder)</li>
+            <li>Initial wedge: hospitality + accessories pilots</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>Ecosystem</h3>
+          <p>
+            Grounded connects waste generators, material suppliers, manufacturers, and brands into a circular supply chain.
+          </p>
+          <ul class="list">
+            <li>Inputs: cafés/hotels (coffee grounds), rubber producers</li>
+            <li>Production: preprocessing + forming + finishing</li>
+            <li>Outputs: sheets to manufacturers, co-branded programs with partners</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEAM -->
+  <section id="team">
+    <div class="container">
+      <div class="section-title">
+        <h2>Team</h2>
+        <div class="hint">Introduce the team, motivation, and capability. Keep it concise.</div>
+      </div>
+
+      <div class="grid">
+        <div class="card">
+          <h3>Who we are</h3>
+          <p>
+            We are a team focused on sustainable materials and circular economy design.
+            Replace this text with your names, roles, and a one-line credibility signal per person.
+          </p>
+          <ul class="list">
+            <li><strong>Founder:</strong> XX — materials R&D, testing, partnerships</li>
+            <li><strong>Co-founder:</strong> XX — operations, sourcing, supply chain</li>
+            <li><strong>Design/Brand:</strong> XX — product design, finishes, applications</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>Advisors / partners (optional)</h3>
+          <p>Add lab mentors, university collaborators, hotel pilot partners, or industry advisors if applicable.</p>
+          <ul class="list">
+            <li>Advisor: XX (materials / manufacturing)</li>
+            <li>Pilot partner: XX (hotel / café chain)</li>
+            <li>Testing support: XX (lab / university)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VIDEO -->
+  <section id="video">
+    <div class="container">
+      <div class="section-title">
+        <h2>Innovation Video</h2>
+        <div class="hint">Embed your YouTube/Vimeo link below.</div>
+      </div>
+
+      <div class="video" role="region" aria-label="Innovation video embed">
+        <!-- Replace the src with your own YouTube embed link -->
+        <iframe
+          src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+          title="Grounded Innovation Video"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen>
+        </iframe>
+      </div>
+
+      <p class="note">Tip: Use the YouTube “Share → Embed” URL and replace the src above.</p>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="container">
+      <div class="section-title">
+        <h2>Partner with Grounded</h2>
+        <div class="hint">Request samples, pilots, or a waste-to-value partnership. (This form uses email by default.)</div>
+      </div>
+
+      <div class="grid">
+        <div class="card" style="grid-column: span 12;">
+          <h3>Contact</h3>
+          <p>Fill this out and it will open an email draft (no backend needed). You can add a backend later.</p>
+
+          <form id="contactForm" class="form" autocomplete="on">
+            <input name="name" placeholder="Name" required />
+            <input name="email" type="email" placeholder="Email" required />
+            <input name="org" class="full" placeholder="Organization (hotel / café / brand / manufacturer)" />
+            <input name="topic" class="full" placeholder="What do you want? (samples / pilot / sourcing / investment)" />
+            <textarea name="message" class="full" placeholder="Message (include target application, volume estimate, and timeline)"></textarea>
+
+            <div class="full" style="display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-top:4px;">
+              <button class="btn primary" type="submit">Send message</button>
+              <a class="btn" href="mailto:hello@groundedmaterials.com?subject=Grounded%20Partnership%20Inquiry">Email us directly</a>
+              <span class="note small">Replace hello@groundedmaterials.com with your real email.</span>
+            </div>
+          </form>
+
+          <div class="divider"></div>
+
+          <p class="note">
+            <strong>What to include:</strong> target use case (upholstery, bags, etc.), desired thickness/finish, estimated m² volume,
+            and whether you can supply coffee grounds (for cafés/hotels).
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="footer">
+    <div class="container">
+      <div class="footer-row">
+        <div>© <span id="year"></span> Grounded. All rights reserved.</div>
+        <div style="display:flex; gap:10px; flex-wrap:wrap;">
+          <a href="#top">Back to top</a>
+          <span>•</span>
+          <a href="#contact">Contact</a>
+          <span>•</span>
+          <a href="#impact">Impact</a>
+        </div>
+      </div>
+      <p class="note small" style="margin-top:10px;">
+        This website intentionally avoids disclosing proprietary formulation details. Replace placeholders (XX) with your verified figures and references.
+      </p>
+    </div>
+  </div>
+
+  <script>
+    // Year
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Contact form -> mailto (no backend required)
+    document.getElementById("contactForm").addEventListener("submit", function(e){
+      e.preventDefault();
+      const data = new FormData(e.target);
+      const name = encodeURIComponent(data.get("name") || "");
+      const email = encodeURIComponent(data.get("email") || "");
+      const org = encodeURIComponent(data.get("org") || "");
+      const topic = encodeURIComponent(data.get("topic") || "Grounded Partnership Inquiry");
+      const msg = encodeURIComponent(data.get("message") || "");
+
+      const to = "hello@groundedmaterials.com"; // change this
+      const subject = `Grounded: ${decodeURIComponent(topic)}`;
+      const body =
+`Name: ${decodeURIComponent(name)}
+Email: ${decodeURIComponent(email)}
+Organization: ${decodeURIComponent(org)}
+
+Message:
+${decodeURIComponent(msg)}
+`;
+
+      window.location.href = `mailto:${to}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    });
+  </script>
+</body>
+</html>
